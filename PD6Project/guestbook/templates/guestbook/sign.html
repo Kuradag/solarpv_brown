@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -11,10 +12,10 @@
     <title>Sign the Guest Book</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'guestbook/bootstrap.min.css' %}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="sign.css" rel="stylesheet">
+    <link href="{% static 'guestbook/sign.css' %}" rel="stylesheet">
   </head>
 
   <body>
