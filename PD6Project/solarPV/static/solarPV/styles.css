@@ -1,0 +1,97 @@
+/*Most of this css styling is mimicing the pages from w3schools.com*/
+li a:hover {
+   background-color: #111;
+}
+
+ul.nav-bar {
+   margin: 0;
+   padding: 0;
+   overflow: hidden;
+   background-color: #333;
+   text-align: center;
+}
+
+.sub-menu li, .nav-bar li {
+   float: left;
+}
+
+button {
+   border-radius: 15px;
+   background-color: #f4511e;
+   border: none;
+   text-align: center;
+   font-size: 28px;
+   padding: 20px;
+   width: 800px;
+   transition: all 0.5s;
+   cursor: pointer;
+   margin: 5px;
+}
+
+h1 {
+    text-align: left;
+}
+h2 {
+    text-align: left;
+}
+
+li a, .dropbtn {
+   float: left;
+   display: block;
+   color: white;
+   text-align: center;
+   padding: 14px 16px;
+   text-decoration: none;
+}
+
+ul.sub-menu, .nav-bar{
+   list-style-type: none;
+}
+
+li.dropdown {
+   display: inline-block;
+   text-align: center
+}
+
+.dropdown-content {
+   display: none;
+   position: absolute;
+   background-color: #f9f9f9;
+   min-width: 160px;
+   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+   z-index: 1;
+}
+
+.dropdown-content a{
+   color: black;
+   padding: 12px 16px;
+   text-decoration: none;
+   display: block;
+   text-align: left;
+}
+
+.dropdown:hover .dropdown-content {
+   display: block;
+}
+
+.disabled {
+   opacity: 0.6;
+   cursor: not-allowed;
+ }
+
+.header {
+   background-color: #f1f1f1;
+   padding: 20px;
+   text-align: center;
+}
+
+.header img{
+   height: 95px;
+   width: 86px;
+   float: left;
+}
+
+.column {
+   float: left;
+   width: 50.0%;
+   padding: 15px;
