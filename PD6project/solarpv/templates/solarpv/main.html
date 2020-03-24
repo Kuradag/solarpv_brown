@@ -27,7 +27,7 @@
 <head>
     <meta charset="utf-8" />
     <title>solarPV Homepage</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'solarpv/solarPV-styles.css' %}">
+    <link href="{% static 'solarpv/solarPV-styles.css' %}" type="text/css" rel="stylesheet" >
     <script src="script/project1Script.js"></script>
 </head>
 <body>
@@ -40,7 +40,7 @@
         <div class="sideLinks">
             <div class="accountLinks">
                 <h2>Account Links:</h2>
-                <a href="solarPV-registration.html">Register</a>
+                <a href="{% url 'register' %}">Register</a>
                 <a href="solarPV-login.html">Login</a>
             </div>
             <div class="socialLinks">
