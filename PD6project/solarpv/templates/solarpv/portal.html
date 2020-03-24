@@ -19,90 +19,280 @@
 <head>
     <meta charset="utf-8" />
     <title>solarPV Homepage</title>
-    <link href="{% static 'solarpv/solarPV-styles.css' %}" type="text/css" rel="stylesheet" />
+    <link href="{% static 'solarpv/solarPV-styles.css' %}" type="text/css" rel="stylesheet" >
     <script src="script/project1Script.js"></script>
 </head>
 <body>
     <header>
         <div class="logo">
-            <a href="solarPV-Home.html" class="icon">
-                <img src="images/logo.png" />
+            <a href="{% url 'solarpv:main' %}" class="icon">
+                <img src="{% static 'solarpv/images/logo.png' %}" />
             </a>
         </div>
         <div class="sideLinks">
             <div class="accountLinks">
                 <h2>Account Links:</h2>
-                <a href="solarPV-registration.html">Register</a>
-                <a href="solarPV-login.html">Login</a>
+                <a href="{% url 'solarpv:register' %}">Register</a>
+                <a href="{% url 'solarpv:main' %}">Login</a>
             </div>
             <div class="socialLinks">
                 <h2>Social Media Links:</h2>
                 <a href="https://www.facebook.com">
-                    <img src="images/facebook.png" alt="Facebook homepage" />
+                    <img src="{% static 'solarpv/images/facebook.png' %}" alt="Facebook homepage" />
                 </a>
                 <a href="https://www.twitter.com">
-                    <img src="images/twitter.png" alt="Twitter homepage" />
+                    <img src="{% static 'solarpv/images/twitter.png' %}" alt="Twitter homepage" />
                 </a>
                 <a href="https://www.reddit.com">
-                    <img src="images/reddit.png" alt="Reddit homepage" />
+                    <img src="{% static 'solarpv/images/reddit.png' %}" alt="Reddit homepage" />
                 </a>
                 <a href="https://www.linkedin.com">
-                    <img src="images/linkedIn.png" alt="LinkedIn homepage" />
+                    <img src="{% static 'solarpv/images/linkedIn.png' %}" alt="LinkedIn homepage" />
                 </a>
             </div>
         </div>
     </header>
     <nav>
-        <a href="solarPV-Construction.html">Racks & Trackers</a>
+        <a href="{% url 'solarpv:main' %}">Racks & Trackers</a>
         <div class="dropdown">
-            <a class="dropbtn" href="solarPV-Construction.html">PV Module</a>
+            <a class="dropbtn" href="{% url 'solarpv:main' %}">PV Module</a>
             <div class="dropdown-content">
-                <a href="solarPV-Construction.html">PV Module</a>
-                <a href="solarPV-Construction.html">Testing & Certification</a>
-                <a href="solarPV-Construction.html">PV rating</a>
+                <a href="{% url 'solarpv:main' %}">PV Module</a>
+                <a href="{% url 'solarpv:portal' %}">New PV Module</a>
+                <a href="{% url 'solarpv:main' %}">Testing & Certification</a>
+                <a href="{% url 'solarpv:main' %}">PV rating</a>
             </div>
         </div>
         <div class="dropdown">
-            <a class="dropbtn" href="solarPV-Construction.html">PV Systems</a>
+            <a class="dropbtn" href="{% url 'solarpv:main' %}">PV Systems</a>
             <div class="dropdown-content">
-                <a href="solarPV-Construction.html">PV Systems</a>
-                <a href="solarPV-Construction.html">Monitoring & Inspection</a>
-                <a href="solarPV-Construction.html">Performance Analysis</a>
-                <a href="solarPV-Construction.html">Compare system</a>
-                <a href="solarPV-Construction.html">Certification</a>
+                <a href="{% url 'solarpv:main' %}">PV Systems</a>
+                <a href="{% url 'solarpv:main' %}">Monitoring & Inspection</a>
+                <a href="{% url 'solarpv:main' %}">Performance Analysis</a>
+                <a href="{% url 'solarpv:main' %}">Compare system</a>
+                <a href="{% url 'solarpv:main' %}">Certification</a>
             </div>
         </div>
         <div class="dropdown">
-            <a class="dropbtn" href="solarPV-Construction.html">Data Analytics</a>
+            <a class="dropbtn" href="{% url 'solarpv:main' %}">Data Analytics</a>
             <div class="dropdown-content">
-                <a href="solarPV-Construction.html">Data Analytics</a>
-                <a href="solarPV-Construction.html">Module Lifetime Prediction</a>
-                <a href="solarPV-Construction.html">Energy Prediction</a>
+                <a href="{% url 'solarpv:main' %}">Data Analytics</a>
+                <a href="{% url 'solarpv:main' %}">Module Lifetime Prediction</a>
+                <a href="{% url 'solarpv:main' %}">Energy Prediction</a>
             </div>
         </div>
-        <a href="solarPV-Construction.html">Cybersecurity</a>
+        <a href="{% url 'solarpv:main' %}">Cybersecurity</a>
     </nav>
     <section class="mainBody">
-       <article>
-            <h1>Current Article</h1>
-       </article> 
-       <section class="feature">
-            <!-- slide show-->
-           <button class="w3-button w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
-           <img class="mySlides" src="images/security.png" />
-           <img class="mySlides" src="images/earth.png" />
-           <img class="mySlides" src="images/energy.png" />
-           <button class="w3-button w3-display-right" onclick="plusDivs(+1)">&#10095;</button>
-       </section>
-       <section class="news">
-            <h1>Site News:</h1>
-       </section>
+        <h3>New PV Page</h3>
+        <fieldset>
+            <legend>Enter your PV information: </legend>
+            <form>
+                <fieldset>
+                    <legend>Manufacturer Information: </legend>
+                    <label for="manName" class="field">
+                        Name:
+                    </label>
+                    <input id="manufacturerName" type="text" placeholder="required" required /><br />
+                    <label for="manCountry" class="field">
+                        Country:
+                    </label>
+                    <input id="manufacturerCountry" type="text" placeholder="required" required /><br />
+                </fieldset>
+
+                <fieldset>
+                    <legend>Contact Info: </legend>
+                    <!--2/24/2020 - Jonathan Brown
+                        It is understood that the username and password fields are silly
+                    in the context of a web-page such as this. If there was a need to make a
+                    perfect website, then this would be handled more appropriately. For
+                    the sake of a demo of the input validation and the database scripting
+                    some corners needed to be cut.-->
+                    <label for="uName" class="field">
+                        Username:
+                    </label>
+                    <input id="uName" type="text" placeholder="required" required /><br />
+
+                    <label for="password" class="field" maxlength="8">
+                        Password:
+                    </label>
+                    <input id="password" type="password" placeholder="required" required /><br />
+
+                    <label for="fName" class="field">
+                        First Name:
+                    </label>
+                    <input id="fName" type="text" placeholder="required" required /><br />
+
+                    <label for="mName" class="field">
+                        Middle Name:
+                    </label>
+                    <input id="mName" type="text" placeholder="required" required /><br />
+
+                    <label for="lName" class="field">
+                        Last Name:
+                    </label>
+                    <input id="lName" type="text" placeholder="required" required /><br />
+
+                    <label for="address" class="field">
+                        Address:
+                    </label>
+                    <input id="address" type="text" placeholder="required" required /><br />
+
+                    <label for="officePhone" class="field">
+                        Office Phone:
+                    </label>
+                    <input id="officePhone" type="text" placeholder="required" required /><br />
+
+                    <label for="cellPhone" class="field">
+                        Cell Phone:
+                    </label>
+                    <input id="cellPhone" type="text" placeholder="required" required /><br />
+
+                    <label for="email" class="field">
+                        eMail Address:
+                    </label>
+                    <input id="email" type="text" placeholder="required" required /><br />
+                </fieldset>
+
+                <fieldset><legend>PV Data: </legend>
+                    <label for="modelNum" class="field">
+                        Model Number:
+                    </label>
+                    <input id="modelNum" type="text" placeholder="required" required /><br />
+
+                    <label for="modelLength" class="field">
+                        Model Length:
+                    </label>
+                    <input id="modLen" type="text" placeholder="required" required /><br />
+
+                    <label for="modelWidth" class="field">
+                        Model Width:
+                    </label>
+                    <input id="modWidth" type="text" placeholder="required" required /><br />
+                    
+                    <label for="cellArea" class="field">
+                        Cell Area:
+                    </label>
+                    <input id="cellArea" type="text" placeholder="required" required /><br />
+                    
+                    <label for="cellTechnology" class="field">
+                        Cell Technology:
+                    </label>
+                    <input id="cellTech" type="text" placeholder="required" required /><br />
+                    
+                    <label for="totalNumCells" class="field">
+                        Cell Number:
+                    </label>
+                    <input id="totalNumCells" type="text" placeholder="required" required /><br />
+                    
+                    <label for="numCellsSeries" class="field">
+                        Cell Series:
+                    </label>
+                    <input id="numCellsSeries" type="text" placeholder="required" required /><br />
+                    
+                    <label for="numCellStrings" class="field">
+                        Cell Strings Number:
+                    </label>
+                    <input id="NumCellsStrings" type="text" placeholder="required" required /><br />
+                    
+                    <label for="numBypassDiodes" class="field">
+                        Bypass Diode Number:
+                    </label>
+                    <input id="numBypassDiodes" type="text" placeholder="required" required /><br />
+                    
+                    <label for="seriesFuseRating" class="field">
+                        Series Fuse Rating:
+                    </label>
+                    <input id="seriesFuseRating" type="text" placeholder="required" required /><br />
+                    
+                    <label for="intcnctMat" class="field">
+                        Interconnector Material:
+                    </label>
+                    <input id="intcnctMat" type="text" placeholder="required" required /><br />
+                    
+                    <label for="intcnctSupplier" class="field">
+                        Interconnector supplier:
+                    </label>
+                    <input id="intcnctSupplier" type="text" placeholder="required" required /><br />
+                    
+                    <label for="superstrateType" class="field">
+                        Superstrate Type:
+                    </label>
+                    <input id="superstrateType" type="text" placeholder="required" required /><br />
+                    
+                    <label for="superMan" class="field">
+                        Superstrate Manufacturer:
+                    </label>
+                    <input id="superMan" type="text" placeholder="required" required /><br />
+
+                    <label for="subType" class="field">
+                        Substrate Type:
+                    </label>
+                    <input id="subType" type="text" placeholder="required" required /><br />
+                    
+                    <label for="subMan" class="field">
+                        Substrate Manufacturer:
+                    </label>
+                    <input id="subMan" type="text" placeholder="required" required /><br />
+                    
+                    <label for="frameType" class="field">
+                        Frame Type:
+                    </label>
+                    <input id="frameType" type="text" placeholder="required" required /><br />
+                    
+                    <label for="frameAdhsv" class="field">
+                        Frame Adhesive:
+                    </label>
+                    <input id="frameAdhsv" type="text" placeholder="required" required /><br />
+                    
+                    <label for="encapType" class="field">
+                        Encapsulant Type:
+                    </label>
+                    <input id="encapType" type="text" placeholder="required" required /><br />
+                    
+                    <label for="encapMan" class="field">
+                        Encapsulant Manufacturer:
+                    </label>
+                    <input id="encapMan" type="text" placeholder="required" required /><br />
+                    
+                    <label for="junctBoxType" class="field">
+                        Junction Box Type:
+                    </label>
+                    <input id="junctBoxType" type="text" placeholder="required" required /><br />
+                    
+                    <label for="junctBoxMan" class="field">
+                        Junction Box Manufacturer:
+                    </label>
+                    <input id="junctBoxMan" type="text" placeholder="required" required /><br />
+                    
+                    <label for="junctBoxAdhsv" class="field">
+                        Junction Box Adhesive:
+                    </label>
+                    <input id="junctBoxAdhsv" type="text" placeholder="required" required /><br />
+                    
+                    <label for="cableType" class="field">
+                        Cable Type:
+                    </label>
+                    <input id="cableType" type="text" placeholder="required" required /><br />
+                    
+                    <label for="conctType" class="field">
+                        Connection Type:
+                    </label>
+                    <input id="conctType" type="text" placeholder="required" required /><br />
+                    
+                    <label for="maxSysVolt" class="field">
+                        maxSysVolt:
+                    </label>
+                    <input id="maxSysVolt" type="text" placeholder="required" required /><br />
+                </fieldset>
+            </form>
+        </fieldset>
     </section>
     <footer>
-        <a href="solarPV-Terms.html">Terms & Conditions | </a>
-        <a href="solarPV-Privacy.html">Privacy Policy | </a>
-        <a href="solarPV-AboutUs.html">About Us | </a>
-        <a href="solarPV-AboutUs.html">Contact Us</a>
+        <a href="{% url 'solarpv:main' %}">Terms & Conditions | </a>
+        <a href="{% url 'solarpv:main' %}">Privacy Policy | </a>
+        <a href="{% url 'solarpv:main' %}">About Us | </a>
+        <a href="{% url 'solarpv:main' %}">Contact Us</a>
         <p>&copy;2020 All Rights Reserved</p>
     </footer>
 </body>

@@ -11,15 +11,15 @@
 <body>
     <header>
         <div class="logo">
-            <a href="solarPV-Home.html" class="icon">
+            <a href="{% url 'solarpv:main' %}" class="icon">
                 <img src="{% static 'solarpv/images/logo.png' %}" />
             </a>
         </div>
         <div class="sideLinks">
             <div class="accountLinks">
                 <h2>Account Links:</h2>
-                <a href="solarPV-registration.html">Register</a>
-                <a href="solarPV-login.html">Login</a>
+                <a href="{% url 'solarpv:register' %}">Register</a>
+                <a href="{% url 'solarpv:main' %}">Login</a>
             </div>
             <div class="socialLinks">
                 <h2>Social Media Links:</h2>
@@ -39,34 +39,35 @@
         </div>
     </header>
     <nav>
-        <a href="solarPV-Construction.html">Racks & Trackers</a>
+        <a href="{% url 'solarpv:main' %}">Racks & Trackers</a>
         <div class="dropdown">
-            <a class="dropbtn" href="solarPV-Construction.html">PV Module</a>
+            <a class="dropbtn" href="{% url 'solarpv:main' %}">PV Module</a>
             <div class="dropdown-content">
-                <a href="solarPV-Construction.html">PV Module</a>
-                <a href="solarPV-Construction.html">Testing & Certification</a>
-                <a href="solarPV-Construction.html">PV rating</a>
+                <a href="{% url 'solarpv:main' %}">PV Module</a>
+                <a href="{% url 'solarpv:portal' %}">New PV Module</a>
+                <a href="{% url 'solarpv:main' %}">Testing & Certification</a>
+                <a href="{% url 'solarpv:main' %}">PV rating</a>
             </div>
         </div>
         <div class="dropdown">
-            <a class="dropbtn" href="solarPV-Construction.html">PV Systems</a>
+            <a class="dropbtn" href="{% url 'solarpv:main' %}">PV Systems</a>
             <div class="dropdown-content">
-                <a href="solarPV-Construction.html">PV Systems</a>
-                <a href="solarPV-Construction.html">Monitoring & Inspection</a>
-                <a href="solarPV-Construction.html">Performance Analysis</a>
-                <a href="solarPV-Construction.html">Compare system</a>
-                <a href="solarPV-Construction.html">Certification</a>
+                <a href="{% url 'solarpv:main' %}">PV Systems</a>
+                <a href="{% url 'solarpv:main' %}">Monitoring & Inspection</a>
+                <a href="{% url 'solarpv:main' %}">Performance Analysis</a>
+                <a href="{% url 'solarpv:main' %}">Compare system</a>
+                <a href="{% url 'solarpv:main' %}">Certification</a>
             </div>
         </div>
         <div class="dropdown">
-            <a class="dropbtn" href="solarPV-Construction.html">Data Analytics</a>
+            <a class="dropbtn" href="{% url 'solarpv:main' %}">Data Analytics</a>
             <div class="dropdown-content">
-                <a href="solarPV-Construction.html">Data Analytics</a>
-                <a href="solarPV-Construction.html">Module Lifetime Prediction</a>
-                <a href="solarPV-Construction.html">Energy Prediction</a>
+                <a href="{% url 'solarpv:main' %}">Data Analytics</a>
+                <a href="{% url 'solarpv:main' %}">Module Lifetime Prediction</a>
+                <a href="{% url 'solarpv:main' %}">Energy Prediction</a>
             </div>
         </div>
-        <a href="solarPV-Construction.html">Cybersecurity</a>
+        <a href="{% url 'solarpv:main' %}">Cybersecurity</a>
     </nav>
     <section class="mainBody">
 
