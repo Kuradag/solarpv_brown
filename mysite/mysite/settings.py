@@ -31,8 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'backend.app.backend',
-    'solarpv.apps.solarpv',
+    'backend',
+    'solarpv',
     'polls.apps.PollsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
