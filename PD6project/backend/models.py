@@ -5,8 +5,8 @@ NAME_SIZE = 30
 PHONE_SIZE = 14
 ZIPCODE_SIZE = 5
 TYPE_SIZE = 30
-MEASURE_SIZE = 20
-MEASURE_DECIMAL_SIZE = 5
+MEASURE_SIZE = 6
+MEASURE_DECIMAL_SIZE = 6
 
 
 # Create your models here.
@@ -16,6 +16,9 @@ class Client(models.Model):
 
     client_name = models.CharField(max_length=NAME_SIZE)
     client_type = models.CharField(max_length=NAME_SIZE)
+
+    def __str__(self):
+        return self.client_name
 
 
 class User(models.Model):
@@ -32,7 +35,10 @@ class User(models.Model):
     prefix = models.CharField(max_length=NAME_SIZE)
 
     # FK
-    client_ID = models.ForeignKey(Client)
+    client_ID = models.ForeignKey(Client, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.last_name
 
 
 class TestStandard(models.Model):
@@ -42,6 +48,9 @@ class TestStandard(models.Model):
     standard_name = models.CharField(max_length=NAME_SIZE)
     description = models.TextField()
     published_date = models.DateField()
+
+    def __str__(self):
+        return self.standard_name
 
 
 class Location(models.Model):
@@ -57,7 +66,10 @@ class Location(models.Model):
     phone_number = models.CharField(max_length=PHONE_SIZE)
     fax_number = models.CharField(max_length=PHONE_SIZE)
     # FK
-    client_ID = models.ForeignKey(Client)
+    client_ID = models.ForeignKey(Client, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.address1
 
 
 class Product(models.Model):
@@ -85,6 +97,9 @@ class Product(models.Model):
     junction_box_type = models.CharField(max_length=TYPE_SIZE)
     junction_box_manufacturer = models.CharField(max_length=NAME_SIZE)
 
+    def __str__(self):
+        return self.product_name
+
 
 class Certificate(models.Model):
     # PK
@@ -93,16 +108,26 @@ class Certificate(models.Model):
     report_number = models.CharField(max_length=NAME_SIZE)
     issue_date = models.DateField()
     # FK
-    userID = models.ForeignKey(User)
-    standard_ID = models.ForeignKey(TestStandard)
-    location_ID = models.ForeignKey(Location)
-    model_number = models.ForeignKey(Product)
+    userID = models.ForeignKey(User, on_delete=models.CASCADE)
+    standard_ID = models.ForeignKey(TestStandard, on_delete=models.CASCADE)
+    location_ID = models.ForeignKey(Location, on_delete=models.CASCADE)
+    model_number = models.ForeignKey(Product, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.report_number
+
+
+class TestSequence(models.Model):
+    # PK
+    # sequence_ID
+
+    sequence_name = models.CharField(max_length=NAME_SIZE)
+
+    def __str__(self):
+        return self.sequence_name
 
 
 class PerformanceData(models.Model):
-    # PKFK
-    # model_number
-    # sequence_ID
 
     max_system_voltage = models.DecimalField(decimal_places=MEASURE_SIZE, max_digits=MEASURE_DECIMAL_SIZE)
     voc = models.DecimalField(decimal_places=MEASURE_SIZE, max_digits=MEASURE_DECIMAL_SIZE)
@@ -111,6 +136,13 @@ class PerformanceData(models.Model):
     imp = models.DecimalField(decimal_places=MEASURE_SIZE, max_digits=MEASURE_DECIMAL_SIZE)
     pmp = models.DecimalField(decimal_places=MEASURE_SIZE, max_digits=MEASURE_DECIMAL_SIZE)
     ff = models.DecimalField(decimal_places=MEASURE_SIZE, max_digits=MEASURE_DECIMAL_SIZE)
+
+    # PKFK
+    model_number = models.ForeignKey(Product, on_delete=models.CASCADE)
+    sequence_ID = models.ForeignKey(TestSequence, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.max_system_voltage
 
 
 class Service(models.Model):
@@ -123,12 +155,7 @@ class Service(models.Model):
     fi_frequency = models.DecimalField(decimal_places=MEASURE_SIZE, max_digits=MEASURE_DECIMAL_SIZE)
 
     # FK
-    standard_ID = models.ForeignKey(TestStandard)
+    standard_ID = models.ForeignKey(TestStandard, on_delete=models.CASCADE)
 
-
-class TestSequence(models.Model):
-    # PK
-    # sequence_ID
-
-    sequence_name = models.CharField(max_length=NAME_SIZE)
-
+    def __str__(self):
+        return self.service_name

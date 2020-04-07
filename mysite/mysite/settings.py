@@ -80,9 +80,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'solarPVproject',
+        'HOST': 'localhost',
         'USER': 'solarPVuser',
         'PASSWORD': 'xsDgabUcUeGXZb7beiex',
-        'HOST': 'localhost',
         'PORT': '3306',
     }
 }
