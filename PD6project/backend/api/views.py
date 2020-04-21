@@ -1,39 +1,23 @@
-from rest_framework import generics
+from rest_framework import viewsets
 from ..models import Product, Certificate, Service
-from .serializers import ProductSerializer, CertificateSerializer, ServiceSerializer
+from PD6project.backend.serializers import ProductSerializer, CertificateSerializer, ServiceSerializer
 
 
-class ProductListView(generics.ListAPIView):
-
-    queryset = Product.objects.all()
-    serializer_class = ProductSerializer
-
-
-class ProductDetailView(generics.RetrieveAPIView):
+class ProductListView(viewsets.ModelViewSet):
 
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
 
-class CertificateListView(generics.ListAPIView):
+class CertificateListView(viewsets.ModelViewSet):
 
     queryset = Certificate.objects.all()
     serializer_class = CertificateSerializer
 
 
-class CertificateDetailView(generics.RetrieveAPIView):
-
-    queryset = Certificate.objects.all()
-    serializer_class = CertificateSerializer
-
-
-class ServiceListView(generics.ListAPIView):
+class ServiceListView(viewsets.ModelViewSet):
 
     queryset = Service.objects.all()
     serializer_class = ServiceSerializer
 
 
-class ServiceDetailView(generics.RetrieveAPIView):
-
-    queryset = Service.objects.all()
-    serializer_class = ServiceSerializer
