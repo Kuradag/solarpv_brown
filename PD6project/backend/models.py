@@ -96,9 +96,13 @@ class Product(models.Model):
     encapsulant_manufacturer = models.CharField(max_length=NAME_SIZE)
     junction_box_type = models.CharField(max_length=TYPE_SIZE)
     junction_box_manufacturer = models.CharField(max_length=NAME_SIZE)
+    objects = models.Manager()
 
-    def __str__(self):
-        return self.product_name
+    class Meta:
+        ordering = ['product_name']
+
+        def __str__(self):
+            return self.product_name
 
 
 class Certificate(models.Model):
@@ -112,9 +116,13 @@ class Certificate(models.Model):
     standard_ID = models.ForeignKey(TestStandard, on_delete=models.CASCADE)
     location_ID = models.ForeignKey(Location, on_delete=models.CASCADE)
     model_number = models.ForeignKey(Product, on_delete=models.CASCADE)
+    objects = models.Manager()
 
-    def __str__(self):
-        return self.report_number
+    class Meta:
+        ordering = ['report_number']
+
+        def __str__(self):
+            return self.report_number
 
 
 class TestSequence(models.Model):
@@ -157,5 +165,10 @@ class Service(models.Model):
     # FK
     standard_ID = models.ForeignKey(TestStandard, on_delete=models.CASCADE)
 
-    def __str__(self):
-        return self.service_name
+    objects = models.Manager()
+
+    class Meta:
+        ordering = ['service_name']
+
+        def __str__(self):
+            return self.service_name
